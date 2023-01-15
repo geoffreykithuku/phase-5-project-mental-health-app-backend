@@ -37,4 +37,14 @@ Patient.create!([
 
 puts "Done Seeing Patients"
 
+puts "Seeding Appointments..."
+Appointments.create!([
+    {patient_id:Property.last.id,user_id:User.first.id, description: "I love this one and i want it"},
+    {patient_id:Property.third.id,user_id:User.second.id, description: "Such a beautiful scenery.Completely in love with it"},
+    {patient_id: Property.first.id,user_id: User.last.id,description: "Great environment, professional and nice people, clean and beautiful office set up"},
+    {property_id: Property.last.id,user_id: User.second.id,description: "excellent transport links and a peaceful, quiet environment."},
+    {property_id: Property.second.id,user_id: User.last.id,description: "superb design of the houses and their high-quality fittings"}])
+    ])
+
+puts "Done Seeding "
 
