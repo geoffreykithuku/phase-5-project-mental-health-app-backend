@@ -1,0 +1,60 @@
+class DoctorsController < ApplicationController
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+    #GET /doctor
+    def index
+   doctors = Doctor.all
+   render json: doctors ,status: :ok
+   end 
+
+    #GET /doctors/:id
+    def show
+
+    doctor = find_doctor
+    render json: doctor,status: :found
+    end
+
+    #POST /doctors
+   def create 
+    doctor = Doctor.create!(doctor_params)
+    render json: doctor ,status: :created
+   end
+
+    #PATCH /doctor/:id
+    def update
+    doctor =find_doctor
+    doctor.update!(doctor_params)
+    render json: doctor,status: :accepted
+    end 
+
+   #DELETE doctors/:id
+   def destroy
+    doctor =find_doctor
+    doctor.destroy
+    head :no_content
+   end
+
+
+   private
+
+    def doctor_params
+       params.permit(:email,:name)
+    end 
+
+   def render_unprocessable_entity_response(invalid)
+
+    render json: {errors: invalid.record.errors.full_messages},status: :unprocessable_entity 
+
+   end 
+
+  def find_doctor
+
+  a_doctor = Doctor.find_by(id: params[:id])
+
+  a_doctor 
+  end 
+
+def record_not_found_method
+    render json: {error: "Doctor not found"}, status: :not_found
+end
+
+end
