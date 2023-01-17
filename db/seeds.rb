@@ -28,7 +28,7 @@ Patient.create!([
     {name: Faker::Name.name, email: "cottonmerely@lilspam.com"},
     {name: Faker::Name.name , email:"casemeant@chewydonut.com"},
     {name: Faker::Name.name, email: "casavera@gmail.com"},
-    {name: Faker::Name.name,email:"cocoloco@gmail.com"},
+
     {name: Faker::Name.name, email: "needgreem@gmail.com"},
     {name: Faker::Name.name, email: "ineedhelp@gmail.com"},
     {name: Faker::Name.name, email: "markmasaai@gmail.com"},
