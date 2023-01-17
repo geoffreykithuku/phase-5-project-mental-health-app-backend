@@ -14,7 +14,7 @@ Doctor.create!([
     {name: Faker::Name.name,email:"janedoe@gmail.com"},
     {name: Faker::Name.name, email: "owne@gmail.com"},
     {name: Faker::Name.name, email: "mark@gmail.com"},
-    {name: Faker::Name.name, email: "geee@gmail.com"},
+    
     {name: Faker::Name.name, email: "sweets@gmail.com"},
     {name: Faker::Name.name, email: "yougotit@gmail.com"},
     {name: Faker::Name.name, email: "doctormania@gmail.com"},
