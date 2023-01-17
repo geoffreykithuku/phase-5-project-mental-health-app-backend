@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_17_085302) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_17_095509) do
   create_table "appointments", force: :cascade do |t|
-    t.text "issue"
     t.datetime "appointment_time"
-    t.integer "doctor_id_id", null: false
-    t.integer "patient_id_id", null: false
+    t.text "issue"
+    t.text "prescription"
+    t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "status"
-    t.text "prescription"
-    t.index ["doctor_id_id"], name: "index_appointments_on_doctor_id_id"
-    t.index ["patient_id_id"], name: "index_appointments_on_patient_id_id"
+    t.integer "doctors_id", null: false
+    t.integer "patients_id", null: false
+    t.index ["doctors_id"], name: "index_appointments_on_doctors_id"
+    t.index ["patients_id"], name: "index_appointments_on_patients_id"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -40,6 +40,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_085302) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "appointments", "doctor_ids"
-  add_foreign_key "appointments", "patient_ids"
+  add_foreign_key "appointments", "doctors", column: "doctors_id"
+  add_foreign_key "appointments", "patients", column: "patients_id"
 end
