@@ -10,9 +10,8 @@ class AppointmentsController < ApplicationController
     end 
 
     def create 
-        appointment = Appointment.new(appointment_time: params["appointment_time"], issue: params["issue"], prescription: params["prescription"], status: params["status"]  , doctor_id: params["doctor_id"], patient_id: params["patient_id"])
-        appointment.save 
-        render json: appointment 
+        appointment = Appointment.create!(appointment_params)
+        render json: appointment, status: :created
     end 
 
     def update
@@ -27,4 +26,9 @@ class AppointmentsController < ApplicationController
         render json: appointment 
     end 
 
+
+    private 
+    def appointment_params 
+        params.permit(:appointment_date, :appointment_time, :issue, :status, :prescription, :doctor_id, :patient_id)
+    end
 end
