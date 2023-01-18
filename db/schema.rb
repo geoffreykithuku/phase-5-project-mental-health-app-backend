@@ -10,18 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.0].define(version: 2023_01_17_095509) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_01_18_124226) do
   create_table "appointments", force: :cascade do |t|
     t.datetime "appointment_time"
     t.text "issue"
     t.text "prescription"
-    t.boolean "status"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "doctors_id", null: false
     t.integer "patients_id", null: false
+    t.datetime "appointment_date"
     t.index ["doctors_id"], name: "index_appointments_on_doctors_id"
     t.index ["patients_id"], name: "index_appointments_on_patients_id"
   end
@@ -32,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_095509) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "specialty"
   end
 
   create_table "patients", force: :cascade do |t|

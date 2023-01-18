@@ -37,7 +37,7 @@ class DoctorsController < ApplicationController
    private
 
     def doctor_params
-       params.permit(:email,:name)
+       params.permit(:email,:name, :specialty, :password, :password_confirmation)
     end 
 
    def render_unprocessable_entity_response(invalid)
