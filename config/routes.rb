@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   resources :appointments
   resources :doctors
   resources :patients
-
-  post '/signup', to: 'users#create'
-  get '/profile', to: 'users#show'
+  
+  post '/patients', to: "patients#create"
 
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

@@ -1,6 +1,7 @@
 class PatientsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
     #GET /patients
+    
     def index
    patients = Patient.all
    render json: patients ,status: :ok
@@ -10,7 +11,7 @@ class PatientsController < ApplicationController
     def show
 
     patient = find_patient
-    render json: patient,status: :found
+    render json: patient,status: :ok
     end
 
     #POST /patients
@@ -53,8 +54,5 @@ class PatientsController < ApplicationController
   a_patient 
   end 
 
-def record_not_found_method
-    render json: {error: "Patient not found"}, status: :not_found
-end
 
 end
