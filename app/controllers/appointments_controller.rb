@@ -25,6 +25,11 @@ def approve
     ap.update!(status: "Approved")
     render json: ap, status: :accepted
 end
+def complete
+    ap = Appointment.find_by(id: params[:id])
+    ap.update!(prescription: params[:prescription], status: params[:status])
+    render json: ap, status: :accepted
+end
 
     def destroy
         appointment = Appointment.find_by(id: params[:id])
