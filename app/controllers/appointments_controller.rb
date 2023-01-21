@@ -11,6 +11,8 @@ class AppointmentsController < ApplicationController
 
     def create 
         appointment = Appointment.create!(appointment_params)
+        d = rand(Doctor.first.id..Doctor.last.id)
+        appointment.update!(doctor_id: d)
         render json: appointment, status: :created
     end 
 
@@ -27,7 +29,7 @@ def approve
 end
 def complete
     ap = Appointment.find_by(id: params[:id])
-    ap.update!(prescription: params[:prescription], status: params[:status])
+    ap.update!(prescription: params[:prescription], status: "Complete")
     render json: ap, status: :accepted
 end
 
