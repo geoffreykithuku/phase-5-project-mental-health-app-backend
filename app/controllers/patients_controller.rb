@@ -8,10 +8,13 @@ class PatientsController < ApplicationController
    end 
 
     #GET /patients/:id
-    def show
-
-    patient = find_patient
-    render json: patient,status: :ok
+   def show 
+        patient = Patient.find_by(id: session[:user_id])
+        if patient
+         render json: patient
+        else
+         render json: { error: "Not authorized" }, status: :unauthorized
+        end
     end
 
     #POST /patients
