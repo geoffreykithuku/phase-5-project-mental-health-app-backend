@@ -16,6 +16,7 @@ class DoctorsController < ApplicationController
     #POST /doctors
    def create 
     doctor = Doctor.create!(doctor_params)
+    session[:user_id] = doctor.id
     render json: doctor ,status: :created
    end
 

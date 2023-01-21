@@ -1,5 +1,4 @@
-class SessionController < ApplicationController
-    skip_before_action :authorized_account, only: [:login]
+
 class SessionsController < ApplicationController 
  wrap_parameters format: []
 
@@ -17,17 +16,8 @@ class SessionsController < ApplicationController
       end 
 
         def destroy
-
-            patient = Patient.find_by(id: session[:user_id])
-
-            if patient
-                session.delete :user_id
-                head :no_content
-            else
-                patient = Patient.new 
-                patient.validate
-                render json: {errors: patient.errors.full_messages}, status: :unauthorized
-            end
+            session.delete :user_id
+        head :no_content
         end
   
 end
