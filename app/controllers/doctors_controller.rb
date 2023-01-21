@@ -7,15 +7,19 @@ class DoctorsController < ApplicationController
    end 
 
     #GET /doctors/:id
-    def show
-
-    doctor = find_doctor
-    render json: doctor,status: :found
+     def show 
+        doctor = Doctor.find_by(id: session[:user_id])
+        if doctor
+         render json: doctor
+        else
+         render json: { error: "Not authorized" }, status: :unauthorized
+        end
     end
 
     #POST /doctors
    def create 
     doctor = Doctor.create!(doctor_params)
+    session[:user_id] = doctor.id
     render json: doctor ,status: :created
    end
 
