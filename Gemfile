@@ -7,7 +7,7 @@ gem 'railties'
 gem 'sprockets'
 gem 'rake' 
 gem 'sprockets-rails', '~>3.0', '>=3.0.4'
-
+gem "pg"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
 
