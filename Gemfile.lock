@@ -168,6 +168,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  activestorage
   bcrypt (~> 3.1.7)
   debug
   faker
